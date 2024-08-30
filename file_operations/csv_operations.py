@@ -4,6 +4,17 @@ import logging
 
 # Función leer archivo CSV
 def read_csv_file(path, filename):
+    """
+    Lee un archivo CSV y muestra estadísticas descriptivas de las columnas numéricas.
+    
+    Parámetros:
+    path (str): Ruta del directorio donde se encuentra el archivo.
+    filename (str): Nombre del archivo CSV.
+    
+    Retorna:
+    None
+    """
+      
     try:
         # Construye la ruta completa del archivo CSV
         file_path = os.path.join(path, filename)
