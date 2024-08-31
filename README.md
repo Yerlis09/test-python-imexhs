@@ -109,4 +109,4 @@ Inicia el servidor de desarrollo de Django:
     python manage.py runserver
    ```
 
-   La API estará disponible en http://localhost:8000/api/, y puedes explorar la documentación de la API en http://localhost:8000/api/swagger/.
+   La API estará disponible en http://localhost:8000/api/
