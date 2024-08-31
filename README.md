@@ -1,4 +1,4 @@
-# Test Python imeXHS
+# Test Python ImeXHS
 
 Este repositorio contiene el código desarrollado como parte de la prueba técnica para imeXHS. El objetivo principal es demostrar habilidades en Python a través de varios ejercicios que abarcan desde el manejo de archivos hasta la creación de una API RESTful para la gestión de resultados de procesamiento de imágenes médicas.
 
