@@ -71,22 +71,43 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'medical_images_api.wsgi.application'
 
+# settings.py
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'medical_images_api.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
-    'postgres': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'medical_images_db',
         'USER': 'postgres',
         'PASSWORD': 'root',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5433',
+        'OPTIONS': {
+            'options': '-c search_path=public -c client_encoding=UTF8'
+        },
     }
 }
 

@@ -1,6 +1,8 @@
+import uuid
 from django.db import models
 
 class MedicalImageResult(models.Model):
+    id = models.CharField(max_length=255, primary_key=True)
     device_name = models.CharField(max_length=255)
     mean_before_normalization = models.FloatField()
     mean_after_normalization = models.FloatField()
