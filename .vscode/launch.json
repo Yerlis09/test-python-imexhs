@@ -10,7 +10,8 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal",
-            "args": ["6", "./multithreading/sample-03-00-json.json"] 
+            "args": ["4", "./oop/sample-02-dicom.dcm"] 
+              
         }
     ]
 }

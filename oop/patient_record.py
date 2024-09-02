@@ -17,6 +17,7 @@ class PatientRecord(BaseModel):
     weight: Optional[condecimal(gt=0, decimal_places=2)] = None  # type: ignore
     patient_id: Optional[str] = None
     patient_id_type: Optional[str] = None
+    diagnosis: Optional[str] = None
 
     @field_validator('birth_date')
     def validate_birth_date(cls, v):
@@ -39,10 +40,11 @@ class PatientRecord(BaseModel):
             "Sex": self.sex,
             "Weight": self.weight,
             "Patient Id": self.patient_id,
-            "Patient Id Type": self.patient_id_type
+            "Patient Id Type": self.patient_id_type,
+            "Diagnosis": self.diagnosis
         }
 
-    def set_patient_info(self, name=None, age=None, birth_date=None, sex=None, weight=None, patient_id=None, patient_id_type=None):
+    def set_patient_info(self, name=None, age=None, birth_date=None, sex=None, weight=None, patient_id=None, patient_id_type=None, diagnosis=None):
         """
         Establece la información del paciente.
         """
@@ -60,3 +62,16 @@ class PatientRecord(BaseModel):
             self.patient_id = patient_id
         if patient_id_type is not None:
             self.patient_id_type = patient_id_type
+        if diagnosis is not None:
+            self.diagnosis = diagnosis
+
+    def update_diagnosis(self, new_diagnosis: str):
+            """
+            Actualiza el diagnóstico y registra el cambio.
+            """
+            old_diagnosis = self.diagnosis
+            self.diagnosis = new_diagnosis
+            logging.info(f"Diagnosis updated from '{old_diagnosis}' to '{new_diagnosis}'")
+
+    def __str__(self):
+        return str(self.get_patient_info())

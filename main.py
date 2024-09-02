@@ -3,6 +3,7 @@ import sys
 import logging
 from file_operations import list_folder_contents, read_csv_file, read_dicom_file
 from concurrent.futures import ThreadPoolExecutor
+from oop.patient_record import PatientRecord
 from oop.dicom_study_loader import DICOMStudyLoader
 from multithreading.even_odd_threads import EvenOddPrinter  # Importar la clase para hilos de números pares e impares
 from multithreading.json_processor import setup_logging, read_and_validate_json, process_data_item
@@ -57,6 +58,25 @@ def main():
         dicom_loader = DICOMStudyLoader()  # Crear instancia de DICOMStudyLoader
         dicom_loader.load_from_dicom(dicom_file_path)  # Cargar detalles desde el archivo DICOM
         print(dicom_loader)  # Mostrar la información del paciente y del estudio
+        
+        # Crear un objeto de PatientRecord usando un diccionario
+        patient_data = {
+            'name': 'John Doe',
+            'age': 30,
+            'birth_date': '1993-01-01',
+            'sex': 'M',
+            'weight': 70.0,
+            'patient_id': '123456',
+            'patient_id_type': 'SSN'
+        }
+
+        # Instanciar PatientRecord
+        patient_record = PatientRecord(**patient_data)
+        
+        # Actualizar y mostrar información del paciente
+        patient_record.update_diagnosis('Flu')
+        print(patient_record)
+        
     elif operation == 5:
         # Imprimir números pares e impares utilizando multithreading (Punto 3a)
         printer = EvenOddPrinter(max_number=200)
